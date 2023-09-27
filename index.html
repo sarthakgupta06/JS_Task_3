@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Calculator</title>
+    <style>
+        .button-container {
+            display: flex;
+            flex-direction: column;
+        }
+        button {
+            padding: 5px;
+            margin: 2px;
+        }
+        input {
+            margin-bottom: 10px;
+        }
+        div{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Button Calculator</h1>
+    <div class="button-container">
+        <label for="num1Input">Enter Number 1:</label>
+        <input type="number" id="num1Input" placeholder="Enter number 1">
+    </div>
+    <div class="button-container">
+        <label for="num2Input">Enter Number 2:</label>
+        <input type="number" id="num2Input" placeholder="Enter number 2">
+    </div>
+    <div class="button-container">
+        <button id="multiplyButton">Multiply</button>
+        <button id="divideButton">Divide</button>
+    </div>
+    <p id="result"></p>
+
+    <script>
+        // Get the result element
+        let resultElement = document.getElementById("result");
+
+        // Get the input fields
+        let num1Input = document.getElementById("num1Input");
+        let num2Input = document.getElementById("num2Input");
+
+        // Get the buttons
+        let multiplyButton = document.getElementById("multiplyButton");
+        let divideButton = document.getElementById("divideButton");
+
+        // Add click event listeners to the buttons
+        multiplyButton.addEventListener("click", function() {
+            // Get the values from the input fields
+            let num1 = parseFloat(num1Input.value);
+            let num2 = parseFloat(num2Input.value);
+
+            // Check if both inputs are valid numbers
+            if (!isNaN(num1) && !isNaN(num2)) {
+                // Calculate and display multiplication result
+                let multiplicationResult = num1 * num2;
+                resultElement.textContent = `Multiplication Result: ${multiplicationResult}`;
+            } else {
+                // Display an error message for invalid input
+                resultElement.textContent = "Invalid input";
+            }
+        });
+
+        divideButton.addEventListener("click", function() {
+            // Get the values from the input fields
+            let num1 = parseFloat(num1Input.value);
+            let num2 = parseFloat(num2Input.value);
+
+            // Check if both inputs are valid numbers and the second number is not zero
+            if (!isNaN(num1) && !isNaN(num2) && num2 !== 0) {
+                // Calculate and display division result
+                let divisionResult = num1 / num2;
+                resultElement.textContent = `Division Result: ${divisionResult}`;
+            } else {
+                // Display an error message for invalid input or division by zero
+                resultElement.textContent = "Invalid input or division by zero";
+            }
+        });
+    </script>
+</body>
+</html>
